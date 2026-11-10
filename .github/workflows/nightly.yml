@@ -21,9 +21,9 @@ jobs:
       PYTHON: ${{ matrix.python-version }}
       KERAS_BACKEND: ${{ matrix.backend }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Get pip cache dir
@@ -32,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip setuptools
           echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
       - name: pip cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('requirements.txt') }}
@@ -69,9 +69,9 @@ jobs:
       PYTHON: ${{ matrix.python-version }}
       KERAS_BACKEND: ${{ matrix.backend }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Get pip cache dir
@@ -80,7 +80,7 @@ jobs:
           python -m pip install --upgrade pip setuptools
           echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
       - name: pip cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-pip-latest-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('requirements.txt') }}
@@ -109,9 +109,9 @@ jobs:
     name: Check the code format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Set up Python 3.11
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - name: Get pip cache dir
@@ -120,7 +120,7 @@ jobs:
           python -m pip install --upgrade pip setuptools
           echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
       - name: pip cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('requirements.txt') }}
@@ -137,9 +137,9 @@ jobs:
     needs: [build, build-python-latest, format]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - name: Install dependencies
